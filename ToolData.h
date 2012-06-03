@@ -2,8 +2,14 @@
 #define TOOL_DATA_H
 
 #include "PluginData.h"
+#include "PluginHub.h"
+#include "PluginImageSettings.h"
+#include "PluginPipeSettings.h"
+#include "PluginTile.h"
+#include "PluginImage.h"
 
-#include <QTime>
+#include <QString>
+#include <QList>
 
 class ToolData : public PluginData
 {
@@ -16,17 +22,20 @@ public:
     bool requiresDisk() const;
     QString filterName() const { return ""; }
 
+    int version;
+
     int ownerId;
     int groupId;
     QString owner;
     QString group;
 
+    QList<int> enabledIds;
+
     void addEnabledId(int id);
-    QList<int> *getEnabledIds() { return &m_enabledIds; }
 
 private:
 	PluginHub *m_hub;
-    QList<int> m_enabledIds;
+
 };
 
 #endif

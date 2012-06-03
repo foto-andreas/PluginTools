@@ -7,10 +7,9 @@
 #include "PluginImage.h"
 
 #include <QDebug>
-#include <QString>
 
 ToolData::ToolData(PluginHub *hub)
-    : ownerId(-1), groupId(-1), owner(""), group(""), m_hub(hub), m_enabledIds()
+    : version(1), ownerId(-1), groupId(-1), owner(""), group(""), enabledIds(), m_hub(hub)
 {
 }
 
@@ -37,5 +36,5 @@ bool ToolData::requiresDisk() const
 }
 
 void ToolData::addEnabledId(int id) {
-    m_enabledIds.append(id);
+    enabledIds.append(id);
 }
