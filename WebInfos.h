@@ -22,7 +22,7 @@ class WebInfos : public QObject {
          * @param identifier plugin identifier
          * @param sdkVersion the version of the ASP sdk (currently 8)
          */
-        WebInfos(QString identifier, QString sdkVersion);
+        WebInfos(QString identifier, QString sdkVersion, QString installedVersion);
 
         /** Fetch the infos from the web database. */
         void fetch();
@@ -42,10 +42,15 @@ class WebInfos : public QObject {
          */
         QString identifier();
 
-        /** Version string of the plugin
-         * @returns the version number of the plugin
+        /** Version string of the installed plugin
+         * @returns the installed version number of the plugin
          */
-        QString version();
+        QString installedVersion();
+
+        /** Version string of the plugin download
+         * @returns the web version number of the plugin
+         */
+        QString webVersion();
 
         /** Link of the plugin
          * @returns a link to the new version download
@@ -73,7 +78,8 @@ class WebInfos : public QObject {
         WebContents* m_wc; /**< our web contents */
         QString m_name; /**< holds the plugin name */
         QString m_identifier; /**< holds the plugin identifier */
-        QString m_version; /**< holds the plugin version */
+        QString m_installedVersion; /** the installed version */
+        QString m_webVersion; /**< holds the plugin version */
         QString m_link; /**< holds the link to the plugin download */
         QString m_sdk_version; /**< this is the SDK version */
 
