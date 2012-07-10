@@ -57,6 +57,16 @@ bool WebInfos::isWebNewer() {
     return true;
 }
 
+QString WebInfos::formatVersion(QString versionString) {
+    QStringList vList = versionString.split(".");
+    QString result("");
+    QStringListIterator i(vList);
+    while (i.hasNext()) {
+        result.append(QString("%1.").arg(i.next(),5,'0'));
+    }
+    return result;
+}
+
 QString WebInfos::name() {
     return m_name;
 }

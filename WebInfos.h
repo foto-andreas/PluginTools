@@ -62,7 +62,10 @@ class WebInfos : public QObject {
          */
         QString sdk_version();
 
-        public slots:
+        /** Formats the version string for compares */
+        static QString formatVersion(QString versionString);
+
+public slots:
 
         /** This slot is called when the infos are available
          * @param str the resulting string we can parse
@@ -74,7 +77,7 @@ class WebInfos : public QObject {
         /** This signal is emitted when the values are available. */
         void ready();
 
-    private:
+private:
         WebContents* m_wc; /**< our web contents */
         QString m_name; /**< holds the plugin name */
         QString m_identifier; /**< holds the plugin identifier */
@@ -82,6 +85,7 @@ class WebInfos : public QObject {
         QString m_webVersion; /**< holds the plugin version */
         QString m_link; /**< holds the link to the plugin download */
         QString m_sdk_version; /**< this is the SDK version */
+
 
 };
 
